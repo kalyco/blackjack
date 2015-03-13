@@ -80,15 +80,16 @@ class Hand
       if check.face_card?
         value = 10
       elsif check.ace?
-        value = 11
+        value = 1
         ace_check = true
       else
         value = check.rank.to_i
       end
       total += value
     end
-    if ace_check == true && total > 21
-      total -= 9
+    if ace_check == true && total <= 11
+      total += 10
+      # need to account for more aces
     end
     total
   end
